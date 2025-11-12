@@ -161,7 +161,7 @@ static inline std::string maybeWrapIpV6(const std::string &address) {
 static inline std::pair<std::string, uint16_t> parseHostNameWithPort(
     const std::string &server_name) {
     uint16_t port = getDefaultHandshakePort();
-
+    LOG(INFO) << "Parsing hostname with port: " << server_name <<" and port is:"<< port;
     if (server_name.starts_with("[")) {
         // [ipv6] or [ipv6]:port
         const size_t closing_bracket_pos = server_name.find(']');

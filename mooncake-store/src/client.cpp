@@ -251,7 +251,7 @@ ErrorCode Client::InitTransferEngine(
             }
         }
         transfer_engine_->setAutoDiscover(auto_discover);
-
+        LOG(INFO) << "local_hostname is: " << local_hostname;
         auto [hostname, port] = parseHostNameWithPort(local_hostname);
         int rc = transfer_engine_->init(metadata_connstring, local_hostname,
                                         hostname, port);
