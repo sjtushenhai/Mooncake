@@ -56,8 +56,10 @@ void HttpMetadataServer::init_server() {
             std::string body(req.get_body());
             {
                 std::lock_guard<std::mutex> lock(store_mutex_);
+                auto it = store_.find(std::string(key));
                 if (key.find("rpc_meta") != std::string::npos &&
                     store_.find(std::string(key)) != store_.end()) {
+                    LOG(INFO) << "rpc_meta is++++++: " << it->second;
                     resp.set_status_and_content(
                         status_type::bad_request,
                         "Duplicate rpc_meta key not allowed");
