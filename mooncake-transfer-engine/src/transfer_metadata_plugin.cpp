@@ -296,6 +296,7 @@ struct HTTPStoragePlugin : public MetadataStoragePlugin {
     }
 
     bool set(const std::string &key, const Json::Value &value) override {
+        LOG(INFO) << "PUT " << key << " to " << metadata_uri_;
         CURL *h = tl_easy();
         curl_easy_reset(h);
 
