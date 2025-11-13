@@ -251,6 +251,7 @@ int TransferEngine::init(const std::string &metadata_conn_string,
 }
 
 int TransferEngine::freeEngine() {
+    LOG(INFO) << "Freeing Transfer Engine";
     if (metadata_) {
         metadata_->removeRpcMetaEntry(local_server_name_);
         metadata_.reset();

@@ -670,6 +670,7 @@ int TransferMetadata::removeRpcMetaEntry(const std::string &server_name) {
     if (p2p_handshake_mode_) {
         return 0;
     }
+    LOG(INFO) << "Remove rpc meta entry for " << rpc_meta_prefix_ + server_name;
     if (!storage_plugin_->remove(rpc_meta_prefix_ + server_name)) {
         LOG(ERROR) << "Failed to remove location of " << server_name;
         return ERR_METADATA;
