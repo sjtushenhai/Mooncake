@@ -59,6 +59,7 @@ void HttpMetadataServer::init_server() {
                 if (key.find("rpc_meta") != std::string::npos) {
                     auto existing_it = store_.find(std::string(key));
                     if (existing_it != store_.end()) {
+                        LOG(INFO) << "The rpc body is :" << body << "and the existing body is : " << existing_it->second;
                         // If the value is the same, allow it (same machine restart)
                         if (existing_it->second == body) {
                             LOG(INFO) << "The same rpc_meta key already exists in same machine";
