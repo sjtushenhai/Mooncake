@@ -52,7 +52,7 @@ void HttpMetadataServer::init_server() {
                                             "Missing key parameter");
                 return;
             }
-
+            LOG(INFO) << "Received PUT request for key: " << key;
             std::string body(req.get_body());
             {
                 std::lock_guard<std::mutex> lock(store_mutex_);
