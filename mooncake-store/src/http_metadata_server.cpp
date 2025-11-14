@@ -61,6 +61,7 @@ void HttpMetadataServer::init_server() {
                     if (existing_it != store_.end()) {
                         // If the value is the same, allow it (same machine restart)
                         if (existing_it->second == body) {
+                            LOG(INFO) << "The same rpc_meta key already exists in same machine";
                             store_[std::string(key)] = body;
                         } else {
                             // Different value means real conflict
